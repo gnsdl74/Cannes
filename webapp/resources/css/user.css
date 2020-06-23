@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+.container {
+	min-width: 320px;
+	max-width: 900px;
+	padding: 0 40px 40px 40px;
+	margin: 0 auto;
+}
+
+.sub-location {
+	text-align: left;
+	padding: 15px 0;
+	background: #f8f8fa;
+	font-size: 16px;
+	color: #444;
+	line-height: 16px;
+}
+
+.sub-location-inner {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.sub-location p {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.sub-location i {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 18px;
+	line-height: 16px;
+}
+
+.user-infobox {
+	padding: 40px 0;
+}
+
+.user-infobox #infobox-title {
+	font-size: 30px;
+	font-weight: 400;
+	color: black;
+	padding-bottom: 25px;
+}
+
+.user-infobox #infobox-subtitle {
+	color: black;
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+.user-infobox #infobox-subtitle span {
+	font-size: 20px;
+	color: #ff4040;
+}
+
+.user-infobox #infobox-subtitle #right {
+	float: right;
+	font-size: 15px;
+	color: black;
+	line-height: 2;
+}
+
+.user-infobox .font-orange {
+	font-size: 15px; color : #e63e30;
+	vertical-align: middle;
+	color: #e63e30;
+}
+
+.user-infobox .user-info {
+	border-top: 1px solid #6a6a6a;
+}
+
+.user-info table {
+	width: 100%;
+}
+
+.user-info tbody tr {
+	height: 50px;
+	border-bottom: 1px solid #d1d5dd;
+	line-height: 30px;
+}
+
+.user-info tbody th {
+	position: relative; font-size : 14px;
+	width: 25%;
+	text-align: left;
+	padding: 7px 15px;
+	font-size: 14px;
+}
+
+.user-info tbody td {
+	position: relative;
+	font-size: 14px;
+}
+
+#nameDiv {
+	display: none;
+	vertical-align: middle;
+}
+
+#phoneDiv {
+	display: none;
+	vertical-align: middle;
+}
+
+.changebx {
+	margin-top: 5px;
+	height: 20px;
+	padding: 0 5px;
+}
+
+.warning {
+	display: inline-block;
+	color: red;
+}
+
+.user-info #nameInfo {
+	font-size: 13px;
+}
+
+.user-info #leave {
+	float: right;
+	margin-right: 15px;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #333;
+}
+
+.user-info a {
+	display: inline-block;
+	color: #fff;
+	background-color: #777;
+	padding: 0 12px;
+	border-radius: 4px;
+}
+
+.user-info #formatPhone {
+	display: inline-block;
+	padding-right: 20px;
+}
+
+.user-info .phone-update {
+	display: inline-block;
+}
+
+.user-info #emailInfo {
+	width: 95%;
+	height: 30px;
+	font-size: 14px;
+	padding: 0 10px;
+	border: 1px solid #d8d9db;
+}
+
+.info-submit {
+	margin-top: 40px;
+	padding: 20px 0 30px 0;
+	text-align: center;
+}
+
+.info-submit button {
+	width: 80px;
+	height: 45px;
+    line-height: 30px;
+    color: #fff;
+	background-color: #333;
+	border-radius: 4px;
+	border: 1px solid #333;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	margin: 0 3px;
+}
+
+.info-submit #cancel {
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #333;
+}

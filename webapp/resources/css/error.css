@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+.error-container {
+	width: 680px;
+	height: 599px;
+	text-align: center;
+	margin: 0 auto;
+	padding: 80px 0;
+}
+
+.error-container .error-page {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.error-container .error-page.title {
+	font-size: 25px;
+	font-weight: 600;
+	padding-bottom: 20px;
+}
+
+.error-container .error-content {
+	padding-bottom: 30px;
+	border-bottom: 2px solid #eeeeee;
+}
+
+.error-container .error-info {
+	padding: 20px;
+}
+
+.error-container .error-info .info-call {
+	width: 28px;
+	height: 28px;
+}
+
+.error-container .error-info span {
+	margin: 0 5px;
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+.error-container .error-info em {
+	font-size: 16px;
+	font-weight: 600;	
+	vertical-align: middle;
+}
+
+.error-container .error-send {
+	vertical-align: middle;
+}
+
+.error-container .error-send #prev {
+	display: inline-block;
+	width: 160px;
+	height: 50px;
+	color: #fff;
+	background-color: #222;
+	border-radius: 4px;
+	font-size: 15px;
+	line-height: 46px;
+	margin: 0 5px 0 0;
+}
+
+.error-container .error-send #main {
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	color: #fff;
+	background-color: #222;
+	border-radius: 4px;
+	font-size: 15px;
+	line-height: 46px;
+}

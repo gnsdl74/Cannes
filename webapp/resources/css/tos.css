@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+body {
+	color: #555;
+    background: #eeeeee;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[type=checkbox] {
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+}
+
+.tos-container {
+    min-width: 320px;
+    max-width: 800px;
+    padding: 40px;
+    margin: 0 auto;
+    background: #ffffff;
+}
+
+.tos-container .tos-info {
+	margin: 0 auto;
+	max-width: 500px;
+}
+
+.tos-container .tos-info .step-member {
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+.tos-container .tos-info .step-member ol {
+	display: inline-block;
+	list-style-type: none;
+	overflow: hidden;
+    border-bottom: 2px solid #eeeeee;
+}
+
+.tos-container .tos-info .step-member ol li {
+  	float: left;
+  	margin: 0 30px 0 0;
+  	font-size: 15px;
+}
+
+.tos-container .tos-info .step-member ol li:last-child {
+	margin-right: 0;	
+}
+
+.tos-container .tos-info .step-member ol li .step {
+	padding-bottom: 16px;
+}
+
+.tos-container .tos-info .step-member ol li .on {
+	border-bottom: 2px solid #ff0000;
+	color: #ff0000;
+}
+
+.tos-container .tos-info .tos-title {
+	padding-bottom: 20px;
+}
+
+.tos-container .tos-info .tos-title strong {
+	display: block;
+	font-size: 25px;
+	font-weight: 500;
+	color: black;
+	padding-bottom: 10px;
+}
+
+.tos-container .tos-info .tos-title span {
+	display: block;
+	font-size: 15px;
+}
+
+.tos-container .tos-info .member-rule-agree {
+	box-sizing: border-box;	
+}
+
+.tos-container .tos-info .all-chk {
+	font-size: 18px;
+	color: black;
+	padding-bottom: 15px;
+	border-bottom: 2px solid #eeeeee;
+}
+
+.tos-container .tos-info .block {
+	padding: 30px 0 0 0;
+	font-size: 15px;
+}
+
+.tos-container .tos-info .block .chk {
+	padding-bottom: 15px; 	
+}
+
+.tos-container .tos-info .block .chk .must {
+	color: #ff4040;
+}
+
+.tos-container .tos-info .block textarea {
+	padding: 20px;
+	resize: none;
+}
+
+.tos-container .tos-info .btn-member-bottom {
+	padding: 40px 0 0 0;
+	text-align: center;
+}
+
+.tos-container .tos-info .btn-member-bottom .btn-submit {
+	width: 100px;
+	height: 50px;
+	font-size: 15px;
+	color: #fff;
+	background-color: #222;
+	border-radius: 4px;
+}
+
+.tos-container .tos-info .btn-member-bottom .btn-submit[disabled] {
+	background-color: #e0e0e0;
+	color: #777;
+	cursor: default;
+}

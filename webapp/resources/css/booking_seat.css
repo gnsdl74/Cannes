@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+
+.seat-frame {
+	width: 780px;
+	float: left;
+}
+
+.screen-img img {
+	width: 500px;
+	height: 60px;
+	margin-right: 60px;
+}
+
+.seat-title {
+	position: relative;
+	height: 40px;
+	border-bottom: 1px solid #d8d9db;
+}
+
+.seat-title p{
+	position: relative;
+	line-height: 38px;
+	text-align: left;
+	font-size: 1.3em;
+	padding-left: 10px;	
+}
+
+.seat-title p button{
+	position: absolute;
+	right: 10px;
+	top: 5px;
+    line-height: 32px;
+    height: 32px;
+    padding: 0 12px;
+    display: inline-block;
+    border: 1px solid #c1c1c1;
+    background-color: #fff;
+    color: #444;
+    border-radius: 4px;
+    font-size: .9333em;
+    margin-left: 375px;
+}
+.iconset{
+	width:14px;
+	height:14px;	
+	background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-reset-small.png) 
+}
+
+.sub {
+	font-size:.8823em;
+}
+.seat-count {
+	text-align: left;
+	font-size: 20px;
+	color: #222;
+	height: 38px;
+	line-height: 32px;
+	padding-left: 20px;
+	background-color: #f2f4f5;
+	box-sizing: border-box;
+}
+
+.seat-result {
+	float: right;
+	width: 310px;
+	border-left: 1px solid #d8d9db;
+}
+
+
+
+/* 좌석 인원 css*/
+.count-cell {
+	display: inline;
+	margin-right: 30px;
+}
+
+.txt  {
+	font-size: 15px;
+	display: inline;
+}
+
+.count-cell button{
+	width: 30px;
+	height: 25px;
+	border: 1px solid #ccc;	
+	background-color: #fff;	
+}
+
+.down{
+	margin-right: -5px;
+	border-radius: 5px 0 0 5px;
+}
+.up{
+	margin-left: -5px;	
+	border-radius: 0 5px 5px 0;
+}
+
+
+
+/*좌석 버튼*/
+.seatBtn {
+	position: absolute;
+	width: 22px;
+	height: 18px;	
+	margin-right: -4px;
+	border: 1px solid #02bfd3;
+	
+}
+.seatBtn:focus {
+	outline: 0 !important;
+}
+
+
+.row{
+	border: 1px solid #ccc! important;
+}
+
+#active{
+	color: white;
+	background-color: #747474;	
+}
+
+#inactive{
+	border: 1px solid #02bfd3;
+	background-position: center 0;
+	background-image: url(
+	https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-finish.png
+	)!important;
+	background-color: #ccc ! important;
+}
+
+
+
+
+/*좌석 결과*/
+.seat-result{
+	background-color: #333;
+	border: 1px solid #ccc;
+	color: rgb(241, 241, 241);
+}
+
+.movie-info{
+	width:90%;
+	height: 30px;
+	margin-top:10px;	
+	border-bottom: 1px solid rgb(108, 108, 108);
+}
+
+.schedule-info{
+	margin-top:10px;
+	width:90%;
+	min-height : 121px;	
+	border-bottom: 1px solid rgb(108, 108, 108);
+}
+
+.schedule{
+	float: left;
+}
+
+.poster-area{
+	float: right;
+	width: 80px;
+	height: 110px;
+	margin-right:10px;
+}
+
+.poster{	
+	display: inline-block;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.seat-info{
+	margin-top:10px;
+	width: 90%;	
+	overflow:hidden;
+	height:auto;
+	border: 1px solid rgb(108, 108, 108);	
+	border-radius: 5px 5px 5px 5px;
+}
+
+.choice-legend {
+	float: left;	
+	padding: 16px 0 0 20px;
+}
+
+.legend-list li{
+	margin-bottom: 5px;
+}
+
+
+.seat-condition{
+	display:inline-block;
+	width: 14px;
+	height: 14px;
+}
+
+.seat-condition.choice, .seat-condition.common{
+	margin-left: -24px;
+} 
+
+.seat-condition.choice, #choice{	
+	background-position: right 0;
+	background-color: #503396!important;
+	background-image: 
+	url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-choice.png)
+	!important;	
+}
+
+.seat-condition.finish{
+	background-color: ccc!important;
+	background-position: 50%;
+	background-image: 
+	url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-finish.png)
+	!important
+}
+
+.seat-condition.impossible{
+	background-color: ccc!important;
+	background-position: 50%;
+	background-image: 
+	url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-impossible.png)
+	!important
+}
+
+.seat-condition.common{
+	background-image:
+	url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-seat-condition-common-s.png);	
+}
+
+.choice-result{
+	float: right;
+	width: 45%;
+	min-height:120px;
+	border-left: 1px solid rgb(108, 108, 108);	
+}
+
+.result{
+	display:inline-block;
+	width: 40px;
+	height: 35px;
+	text-align:center;
+	border: 1px solid #5c5c5c;
+	margin: 5px;
+	margin-top: 10px;
+	line-height: 30px;
+}
+
+.payment-info{
+	margin: 20px;
+}
+
+.payment-info .payment, .payment-info #payment-tit{
+	margin-top:20px;
+	display: inline-block;
+}
+
+.payment-area{
+ overflow: hidden;
+}
+
+.payment{
+	margin-left: 100px;
+}
+
+.payment-info #payment-tit .payment-info .payment{
+	float: left;
+}
+.result-choice a{
+	font-size: 1.4em;
+	line-height: 35px;
+}
+
+#page-prev{
+	float: left;
+	text-align:center;
+	color: #fff!important;
+	width: 50%;
+	height: 40px;
+	background-color: #53565b;
+}
+
+#page-next{
+	float: right;
+	height: 40px;
+	color: #fff!important;
+	width: 50%;
+	background-color: #329eb1;
+}
+
+
+/*글자크기*/
+#movie-title{
+	margin-left: 10px;
+}
+#movie-title, #payment-tit{
+	font-size: 1.3em;
+	line-height: 15px;
+}
+#money{
+	font-size: 1.6em;
+	color: #59bec9;
+}
+	
+.scheudle-text{
+	text-align:left;
+	font-size: 1.0em;
+	line-height: 20px;
+	color: #b4b4b4;
+}
+
+.seat-choice {width: 630px; margin: 0 auto;}
+
+
+

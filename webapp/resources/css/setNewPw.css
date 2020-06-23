@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+body {
+	color: #555;
+	background: #eeeeee;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.pw-main {
+	text-align: center;
+	min-width: 320px;
+	max-width: 800px;
+	padding: 40px;
+	margin: 0 auto;
+	background: #ffffff;
+}
+
+.pw-main .pw-title {
+	font-size: 20px;
+	font-weight: 600;
+	text-align: left;
+	padding-bottom: 15px;
+	border-bottom: 2px solid #eeeeee;
+}
+
+.pw-main .pw-title span {
+	padding: 0 10px 0 0;
+	color: #ff0000;
+}
+
+.pw-main .pw-content {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.pw-main .pw-content .info-pw {
+	font-size: 16px;
+	font-weight: 500;
+	padding: 30px 0 0 0;
+}
+
+.pw-main .pw-content .input-pw {
+	margin: 15px 0 0 0;
+	border-top: 1px solid black;
+}
+
+.pw-main .pw-content .input-pw .pw-table {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.pw-main .pw-content .input-pw .pw-table th {
+	color: #444;
+	font-size: 14px;
+	width: 100px;
+	display: table-cell;
+	background: #eeeeee;
+	text-align: left;
+	padding: 15px 20px;
+	cursor: default;
+}
+
+.pw-main .pw-content .input-pw .pw-table tr {
+	border-bottom: 1px solid #ddd;
+}
+
+.pw-main .pw-content .input-pw .pw-table td {
+	padding: 0 15px;
+	height: 50px;
+}
+
+.pw-main .pw-content .input-pw .pw-table td input {
+	display: block;
+	width: 60%; height : 30px;
+	padding: 0 10px;
+	height: 30px;
+}
+
+.pw-main .pw-content .input-pw .pw-table td label {
+	font-size: 14px;
+	color: #ff0000;
+	cursor: default;
+	padding: 0 0 5px 0;
+	float: left;
+}
+
+.pw-main .pw-content .input-pw .guide-info {
+	font-size: 13px;
+	vertical-align: middle;
+	margin: 5px 0;
+}
+
+.pw-main .pw-content .input-pw .guide-info p {
+	padding: 5px 0;
+}
+
+.pw-main .pw-content .input-pw #btnPwSend {
+	margin: 20px 0 0 0;
+	background-color: #222;
+	color: #fff;
+	border-radius: 4px;
+	width: 100px;
+	height: 40px;
+}

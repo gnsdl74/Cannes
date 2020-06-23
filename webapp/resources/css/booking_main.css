@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+button:hover{background:#f0f0f0;}
+button:focus {outline: none !important;}
+.date-text:hover{width: 39px; height:5px; background-color: gray;}
+.reservation-date {
+	position: relative;
+	height: 40px;
+	border-bottom: 1px solid #d8d9db;
+}
+
+.reservation-date-inner {position: relative; margin-right: 40px;}
+
+.date-btn {
+	position: absolute;
+	font-size: 25px;
+	color: #444;
+	top: 4px;
+}
+
+.date-btn.date-prev-btn {	left: 20px;}
+.date-btn.date-next-btn {	right: 20px;}
+
+.date-btn-list {display: block;padding: 0 40px;}
+
+.date-btn-list button {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 10px;
+	font-size: 16px;
+	line-height: 40px;
+}
+
+.date-icon {
+	position: absolute; 
+	display: inline-block;
+	width: 29px;
+	height: 35px;
+	right: 8px;
+	top: 0px; 
+	padding: 5px 0px 0 10px;
+	border-left: 1px solid #d8d9db;
+}
+
+.date-icon button {outline: none;}
+
+.date-icon .ui-datepicker-trigger {margin-left: 0;}
+
+.movie-frame-title {
+	width: 100%;
+	text-align:left;
+	font-size: 20px; 
+	color: #222;
+	height: 38px;
+	line-height: 38px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.schedule-frame-title {
+	width: 100%;
+	text-align:left;
+	font-size: 20px; 
+	color: #222;
+	height: 38px;
+	line-height: 38px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.movie-frame {
+	width: 659px;
+	float: left;
+}
+
+.movie-area{width: 250px;float:left;}
+
+.movie-area{
+	overflow-y: scroll;
+	width:300px; 
+	height:390px;
+	margin-left: 30px; 
+	border: 0;
+	text-align: left;
+}
+.movie-area span {display: inline-block; vertical-align: middle; color: #000; font-size:16px;}
+.movie-area span:first-child {margin-right: 5px;}
+
+#movie-btn{
+	width: 265px;
+	height: 35px;
+	margin-bottom: 1px;
+	text-align: left;
+}
+.movie-poster{
+	width: 329px;
+	height: 390px;
+	float:right;	
+}
+
+
+.poster-area {height: 390px; line-height: 390px;}
+
+.poster{	
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	max-height: 100%;
+}
+
+.schedule-frame {
+	float: right;
+	width: 439px;
+	border-left: 1px solid #d8d9db;
+	overflow-y: scroll;
+	height: 460px;
+}
+
+#schedule-btn {
+	width: 100%;
+	height: 45px;
+	margin-bottom: 1px;
+	border-bottom: 1px solid #d8d9db;
+}
+
+.date-text{	
+	width : 39px;
+	height: 18px;	
+
+}
+
+list{
+	list-style-type: none;
+}
+
+.date-btn-area{
+	border: 1px solid white;
+	margin-bottom: 1px;
+}
+
+.date-prev-btn{
+	border: 1px solid white;
+	background-color: rgba(0,0,0,0);
+
+}
+
+.date-next-btn{
+	border: 1px solid white;
+	background-color: rgba(0,0,0,0);		
+}
+#date-btn{
+	background-color: rgba(0,0,0,0);
+	color:black;
+	padding: 3px;
+}
+
+#date-btn-sun{
+	background-color: rgba(0,0,0,0);
+	color:red;
+	padding: 3px;
+}
+
+#date-btn-sat{
+	background-color: rgba(0,0,0,0);
+	color:blue;
+	padding: 3px;
+}
+
+.ui-datepicker-trigger{
+	margin-left: 8px;
+}
+
+.left{
+	float: left;
+	margin-left: 10px;
+}
+
+.right{
+	float: right;
+}
+
+
+.time{
+	display: inline-block;
+}
+.time span, .theater{
+	display: block;
+}
+
+.title{
+	margin-left: 20px;
+	font-size: 1.3em;
+}
+
+
+
+.choice-btn #date-choice{
+	background-color: gray;
+	width: 39px; height:5px; 
+}
+
+#day-choice{
+	background-color: gray;
+	width: 39px; height:5px; 
+}
+
+
+

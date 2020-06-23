@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- Root-context.xml의 역할 > DB를 읽고 쓰기 / Service와 관련한 Java 파일 메모리 로딩 > View와 
+		관련되지 않은 객체를 정의, Service, Repository, DB등 비즈니스 로직에 관환 설정을 함 -->
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- DataSource Bean : DBCP(DataBase Connection Pool) 설정 >> pom.xml에 JDBC 
+		및 myBatis 설정을 먼저하고 작성 -->
+	<bean id="ds" class="oracle.jdbc.pool.OracleDataSource"
+		destroy-method="close">
+		<property name="dataSourceName" value="ds" />
+		<property name="URL"
+			value="jdbc:oracle:thin:@172.16.1.22:1521:orcl" />
+		<property name="user" value="movie" />
+		<property name="password" value="movie" />
+	</bean>
+	<!-- MyBatis 프레임워크가 사용할 SqlSessionFactory Bean -->
+	<!-- DataSource를 작성하고 해당 ds를 참고 -->
+	<!-- dataSource : sql에서 사용할 DB정보, configLocation : sql에서 사용할 변수 설정파일, mapperLocations 
+		: sql에서 사용할 쿼리문들 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds" />
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath:mappers/*.xml" />
+	</bean>
+	<!-- classpath : src/main/resoures를 뜻함 -->
+	<!-- ssf = new SqlSessionFactoryBean(); ssf.setDataSource(ds);와 동일 ... -->
+
+	<!-- MyBatis에서 사용하는 SqlSession Bean -->
+	<!-- sqlSessionFactory를 작성하고 해당 sqlSessionFactory를 참고 -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+	</bean>
+	<!-- session = new SqlSessionTemplate(sqlSessionFactory);와 동일 -->
+
+	<!-- Spring에서 제공하는 DB Transaction Manager를 bean으로 등록 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+
+	<!-- 트랜잭션 관리를 하는 Aspect를 annotation 기반으로 사용 -->
+	<tx:annotation-driven />
+
+	<!-- Mail 인증 관련 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="wjdrlgnsdd@gmail.com" />
+		<property name="password" value="bluesky75412!" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- base-package 밑의 클래스들 중에서 @Component로 등록된 클래스들을 bean으로 생성해서 관리 Persistance/Service 
+		Layer의 컴퍼넌트 클래스들을 bean으로 등록 -->
+	<context:component-scan
+		base-package="com.cannes.movie" />
+
+</beans>

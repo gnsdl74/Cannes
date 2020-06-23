@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+.container {
+	min-width: 320px;
+	max-width: 900px;
+	padding: 0 40px 40px 40px;
+	margin: 0 auto;
+}
+
+.sub-location {
+	text-align: left;
+	padding: 15px 0;
+	background: #f8f8fa;
+	font-size: 16px;
+	color: #444;
+	line-height: 16px;
+}
+
+.sub-location-inner {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.sub-location p {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.sub-location i {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 18px;
+	line-height: 16px;
+}
+
+.content {
+	margin-top: 30px;
+}
+
+.content #title {
+	color: #222;
+	font-size: 28px;
+	font-weight: 500;
+	padding-bottom: 25px;
+	border-bottom: 1px solid black;
+}
+
+.input-pswd {
+	text-align: center;
+	padding: 25px 0;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.input-pswd strong {
+	display: block;
+	color: #333;
+	font-size: 20px;
+	font-weight: 200;
+	padding-bottom: 20px;
+}
+
+.input-pswd span {
+	display: block;
+	font-size: 15px;
+	padding-bottom: 25px;
+}
+
+.input-pswd #confirmPw {
+	width: 350px;
+	height: 45px;
+	padding: 0 10px;
+	border: 1px solid #d8d9db;
+}
+
+.btn-confirm {
+	text-align: center;
+	padding: 20px 0 30px 0;
+}
+
+.btn-confirm a {
+	display: inline-block;
+	width: 85px;
+    height: 45px;
+    font-size: 15px;
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 4px;
+    line-height: 46px;
+    margin: 0 3px;
+}
+
+.btn-confirm #pswdSubmit {
+	color: #fff;
+    background-color: #222;
+    border-radius: 4px;
+}
