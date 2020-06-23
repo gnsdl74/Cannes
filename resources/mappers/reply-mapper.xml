@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cannes.movie.ReplyMapper">
+	<!-- 영화 감상평 등록 -->
+	<insert id="replyInsert"> 
+		insert into ${m_reply} (member_id, movie_no, reply_content, reply_grade) 
+		values(#{memberId},#{movieNo},#{replyContent},#{replyGrade})
+	</insert>
+	
+	<!-- 영화 감상평 전체 가져오기(해당영화) --> 
+	<select id="replySelectAll" resultType="ReplyVO">
+		select * from ${m_reply} where ${m_movie_no} = #{movieNo} order by ${m_reply_no} desc
+	</select>
+	
+	<!-- 영화 감상평 가져오기(해당 회원) -->
+	<select id="replySelectByMemberId" resultType="ReplyVO">
+		select * from ${m_reply} where member_Id = #{memberId} order by ${m_reply_no} desc
+	</select>
+	
+	<select id="replySelectPaging" resultType="ReplyVO">
+		select 
+   			 r.reply_no, r.member_id, r.reply_content, r.reply_date, r.reply_grade 
+   			 from (
+   			 	select rownum rn, a.* 
+   					 from (
+    					select * from m_reply where movie_no = #{movieNo} order by reply_date desc)a
+    					   )r
+    			where rn between #{start} and #{end}
+	</select>
+	
+	<select id="replyCountByMovieNo" resultType="Integer">
+		select count(*) from m_reply where movie_no = #{movieNo}
+	</select>
+	
+	<!-- 영화 감상평 수정 -->
+	<update id="replyUpdate">
+		update ${m_reply} set 
+		${m_reply_content} = #{replyContent}, 
+		${m_reply_grade} = #{replyGrade} where ${m_reply_no} = #{replyNo}
+	</update>
+	
+	<!-- 영화 감상평 삭제 -->
+	<delete id="replyDelete">
+		delete ${m_reply} where ${m_reply_no} = #{replyNo}
+	</delete>
+</mapper>

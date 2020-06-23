@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- $가 confing와 연결, #은 VO와 연결 -->
+<mapper namespace="com.cannes.movie.PayMapper">
+
+	<!-- 전체 결제 내역 가져오기 -->
+	<select id="paySelectAll" resultType="PayVO">
+		select * from ${pay} order by ${pay_no} desc
+	</select>
+	
+	<!-- 회원 결제 내역 가져오기 -->
+	<select id="paySelectByMember" resultType="PayVO">
+		select * from ${pay} where ${pay_member_no} = #{memberNo} order by ${pay_no} desc
+	</select>
+	
+	<!-- 해당 결제번호에 맞는 결제 내역 하나 가져오기 -->
+	<select id="paySelectByPayNo" resultType="PayVO">
+		select * from ${pay} where ${pay_no} = #{payNo}
+	</select>
+	
+	<!-- 결제 후 내역을 등록하기 -->
+	<insert id="payInsert">
+		insert into pay (pay_no, member_no, pay_type, pay_price) 
+		values(#{payNo}, #{memberNo}, #{payType}, #{payPrice})
+	</insert>
+	
+	<!-- 결제 내역 삭제하기 -->
+	<delete id="payDelete">
+		delete from ${pay} where ${pay_no} = #{payNo}
+	</delete>
+</mapper>

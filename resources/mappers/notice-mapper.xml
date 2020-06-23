@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cannes.movie.NoticeMapper">
+	<!-- 공지사항 전체 목록 가져오기 -->
+	<select id="noticeSelectAll" resultType="NoticeVO">
+		select ${notice_no}, ${notice_title}, ${notice_date} from ${notice} 
+		order by ${notice_date} desc
+	</select>
+	
+	<!-- 전체 공지사항 중 공지제목으로 검색 -->
+ 	<select id="noticeSelectByTitle" resultType="NoticeVO">
+ 		select b.${notice_no}, b.${notice_title}, b.${notice_date}, 
+	 	(select count(*) from ${notice} where ${notice_title} like #{keyword}) notice_count
+			from (
+				select rownum rn, a.* 
+				from (
+					select * from ${notice} where ${notice_title} like #{keyword} order by ${notice_date} desc
+				) a
+			) b where rn between #{c.start} and #{c.end}
+	</select>
+	
+	<!-- 선택한 공지사항의 상세정보 가져오기(회원) -->
+	<select id="noticeSelectDetail" resultType="NoticeVO">
+		select * from ${notice} where ${notice_no} = #{noticeNo}
+	</select>
+	
+	<!-- 게시글 전체 개수를 구하는 쿼리문 -->
+	<select id="total_count" resultType="Integer">
+		select count(*) total_cnt from ${notice}
+	</select>
+	
+	<!-- 게시판 페이징 처리를 위한 쿼리문 -->
+	<select id="paging" resultType="NoticeVO">
+		select b.${notice_no}, b.${notice_title}, b.${notice_date}
+		from (
+			select rownum rn, a.* 
+			from (
+				select * from ${notice} order by ${notice_date} desc
+			) a
+		) b where rn between #{start} and #{end}
+	</select>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="noticeInsert">
+		insert into ${notice} (${notice_title}, ${notice_content}) values (#{noticeTitle}, #{noticeContent})
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="noticeUpdate">
+		update ${notice} set ${notice_title} = #{noticeTitle}, ${notice_content} = #{noticeContent}
+		where ${notice_no} = #{noticeNo}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="noticeDelete">
+		delete from ${notice} where ${notice_no} = #{noticeNo}
+	</delete>
+</mapper>

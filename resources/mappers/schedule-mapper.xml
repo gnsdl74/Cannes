@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cannes.movie.ScheduleMapper">
+	<!-- 영화 상영일정 등록 -->
+	<insert id="scheduleInsert">
+		insert into ${schedule} (${schedule_movie_no},${schedule_theater_no},${schedule_date},${schedule_time}) 
+		values(#{movieNo},#{theaterNo},#{scheduleDate},#{scheduleTime})
+	</insert>
+	
+	<!-- 영화 상영일정 가져오기(선택영화)  -->
+	<select id="scheduleSelectByMovie" resultType="ScheduleVO">
+		select * from ${schedule} where ${schedule_movie_no} = #{movieNo}
+	</select>
+	
+	<!-- 영화 상영일정 가져오기(선택날짜)  -->
+	<select id="scheduleSelectByDate" resultType="ScheduleVO">
+		select * from ${schedule} where ${schedule_date} = #{scheduleDate}
+	</select>
+	
+	<!-- 영화 상영일정 가져오기(선택날짜) -->	
+	<select id="scheduleDetailSelectByDate" resultType="ScheduleDetailVO">
+select s.schedule_no, s.schedule_time, m.movie_title,m.movie_showtime ,t.theater_name, t.theater_seat,
+		(select count(seat_active) from seat where seat_active = 'Y' and seat.schedule_no = s.schedule_no) seat_count
+		from schedule s 
+		inner join movie m
+		on s.movie_no = m.movie_no
+		inner join theater t
+		on s.theater_no = t.theater_no
+		where s.schedule_date = #{scheduleDate} and s.schedule_time >= #{scheduleTime}
+		order by s.schedule_time
+	</select>
+	
+	
+	<!-- 영화 상영일정 가져오기(선택날짜,선택영화) -->	
+	<select id="scheduleDetailSelectByMovie" resultType="ScheduleDetailVO">
+		select s.schedule_no, s.schedule_time, m.movie_title,m.movie_showtime ,t.theater_name, t.theater_seat,
+		(select count(seat_active) from seat where seat_active = 'Y' and seat.schedule_no = s.schedule_no) seat_count
+		from schedule s 
+		inner join movie m
+		on s.movie_no = m.movie_no
+		inner join theater t
+		on s.theater_no = t.theater_no
+		where s.schedule_date = #{scheduleDate} and s.schedule_time >= #{scheduleTime}
+		and (s.movie_no = #{movieNo1})
+		order by s.schedule_time
+	</select>	
+	
+	<!-- 영화 상영일정 가져오기(스케줄 번호) -->
+	<select id="scheduleDetailSelectByScheduleNo" resultType="ScheduleDetailVO">
+	select s.${schedule_no},m.${movie_age}, m.${movie_title},m.${movie_poster}, m.${movie_showtime}, t.${theater_name}, s.${schedule_time}, s.${schedule_date}
+	from ${schedule} s
+	join ${movie} m
+	on s.${movie_no} = m.${movie_no}
+	join ${theater} t
+	on s.${theater_no} = t.${theater_no}
+	where s.${schedule_no} = #{scheduleNo}
+	</select>
+	
+	<!-- 영화 상영일정 수정  -->
+	<update id="scheduleUpdate">
+		update ${schedule} set 
+		${schedule_movie_no} = #{movieNo}, 
+		${schedule_theater_no} = #{theaterNo}, 
+		${schedule_date} = #{scheduleDate},
+		${schedule_time} = #{scheduleTime}
+		where ${schedule_no} = #{scheduleNo}
+	</update>
+	
+	<!-- 영화 상영일정 삭제  -->
+	<delete id="scheduleDelete">
+		delete ${schedule} where ${schedule_no} = #{scheduleNo}
+	</delete>
+</mapper>

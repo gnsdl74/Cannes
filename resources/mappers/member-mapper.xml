@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cannes.movie.MemberMapper">
+
+	<!-- 전체 회원 목록 가져오기(관리자용) -->
+	<select id="memberSelectAll" resultType="MemberVO">
+		select * from ${member} order by ${member_no} asc
+	</select>
+	
+	<!-- 전체 회원 중 아이디, 이름, 핸드폰번호 해당하는 회원 가져오기(관리자용) -->
+	<select id="memberSelectById_Name_Phone" resultType="MemberVO">
+		select * from ${member} where ${member_id} like #{memberId} or ${member_name} like #{memberName} or ${member_phone} like #{memberPhone} 	
+	</select>
+	
+	<!-- 로그인 확인 및 마이페이지에서  회원 한명의 정보 가져오기(회원용) -->
+	<select id="memberSelectDetail" resultType="MemberVO">
+		select * from ${member}
+		where ${member_id} = #{memberId} and ${member_pw} = #{memberPw}
+	</select>
+	
+	<!-- 결제페이지에서  회원 한명의 정보 가져오기(회원용) -->
+	<select id="memberSelectDetailById" resultType="MemberVO">
+		select * from ${member}
+		where ${member_id} = #{memberId}
+	</select>
+	
+	<!-- 아이디를 찾을 경우 이름, 생년월일, 이메일 정보로 회원정보 가져오기 -->
+	<select id="memberSelectFindId" resultType="MemberVO">
+		select * from ${member} where ${member_name} = #{memberName} and to_char(${member_birth}, 'YYYY/MM/DD') = #{memberBirth} and ${member_email} = #{memberEmail}
+	</select>
+	
+	<!-- 비밀번호를 찾을 경우 아이디, 이름, 휴대폰 번호로 회원정보 가져오기 -->
+	<select id="memberSelectFindPw" resultType="MemberVO">
+		select * from ${member} where ${member_id} = #{memberId} and ${member_name} = #{memberName} and ${member_phone} = #{memberPhone}
+	</select>
+		
+	<!-- 회원 가입시 아이디 중복체크 -->
+	<select id="memberSelectById" resultType="String">
+		select ${member_id} from ${member} where ${member_id} = #{memberId}
+	</select>
+	
+	<!-- 회원가입에 필요한 정보를 등록하기 -->
+	<insert id="memberInsert">
+		insert into ${member} (${member_id}, ${member_pw}, ${member_name}, ${member_birth}, ${member_phone}, ${member_email}) 
+		values (#{memberId}, #{memberPw}, #{memberName}, #{memberBirth}, #{memberPhone}, #{memberEmail})
+	</insert>
+	
+	<!-- 마이페이지에서 회원정보 수정하기 -->
+	<update id="memberUpdate">
+		update ${member} set ${member_name} = #{memberName}, ${member_phone} = #{memberPhone}, ${member_email} = #{memberEmail} where ${member_id} = #{memberId}
+	</update>
+	
+	<!-- 비밀번호 찾기 후 새로운 비밀번호로 수정 -->
+	<update id="memberPwUpdate">
+		update ${member} set ${member_pw} = #{memberPw} where ${member_id} = #{memberId}
+	</update>
+	
+	<!-- 마이페이지에서 회원탈퇴하기 -->
+	<delete id="memberDelete">
+		delete from ${member} where ${member_id} = #{memberId} and ${member_pw} = #{memberPw} on delete cascade
+	</delete>
+</mapper>

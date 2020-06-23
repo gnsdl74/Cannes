@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- DB 테이블과 컬럼들을 mapper에 매핑하기 위한 변수 선언(SQL에 사용할 객체, 변수들) -->
+	<!-- mapper에서 사용하기 위한 변수 설정 파일 : mybatis-config.xml -->
+	<properties>
+		<!-- 
+		* property 
+		 - name : mapper.xml에서 사용될 이름
+		 - value : DB 테이블 및 컬럼 이름 -->
+		<!-- member-mapper에서 사용될 property > MemberVO를 bean으로 등록 -->		
+		
+		
+		<!-- member 테이블 (회원 테이블) -->
+		<property name="member" value="member"/>
+		<property name="member_no" value="member_no"/>
+		<property name="member_id" value="member_id"/>
+		<property name="member_pw" value="member_pw"/>
+		<property name="member_name" value="member_name"/>
+		<property name="member_birth" value="member_birth"/>
+		<property name="member_phone" value="member_phone"/>
+		<property name="member_email" value="member_email"/>
+		<property name="member_active" value="member_active"/>
+		<!-- // member 테이블 (회원 테이블) -->
+		
+		
+		<!-- movie 테이블 (영화 테이블) -->
+		<property name="movie" value="movie"/>
+		<property name="movie_no" value="movie_no"/>
+		<property name="movie_type" value="movie_type"/>
+		<property name="movie_showtime" value="movie_showtime"/>
+		<property name="movie_age" value="movie_age"/>
+		<property name="movie_title" value="movie_title"/>
+		<property name="movie_content" value="movie_content"/>
+		<property name="movie_director" value="movie_director"/>
+		<property name="movie_actor" value="movie_actor"/>
+		<property name="movie_date" value="movie_date"/>
+		<property name="movie_poster" value="movie_poster"/>
+		<property name="movie_video" value="movie_video"/>
+		<!-- // movie 테이블 (영화 테이블) -->
+		
+		
+		<!-- m_reply 테이블 (영화 한줄평 테이블) -->
+		<property name="m_reply" value="m_reply"/>
+		<property name="m_reply_no" value="reply_no"/>
+		<property name="m_member_id" value="member_id"/>
+		<property name="m_movie_no" value="movie_no"/>
+		<property name="m_reply_content" value="reply_content"/>
+		<property name="m_reply_date" value="reply_date"/>
+		<property name="m_reply_grade" value="reply_grade"/>
+		<!-- // m_reply 테이블 -->
+		
+		
+		<!-- notice 테이블 (공지사항 테이블) -->
+		<property name="notice" value="notice"/>
+		<property name="notice_no" value="notice_no"/>
+		<property name="notice_title" value="notice_title"/>
+		<property name="notice_content" value="notice_content"/>
+		<property name="notice_date" value="notice_date"/>
+		<!-- // notice 테이블 (공지사항 테이블) -->
+		
+		
+		<!-- theater 테이블(상영관 테이블) -->
+		<property name="theater" value="theater"/>
+		<property name="theater_no" value="theater_no"/>
+		<property name="theater_name" value="theater_name"/>
+		<property name="theater_seat" value="theater_seat"/>
+		<!-- // theater 테이블(상영관 테이블) -->
+		
+		
+		<!-- schedule 테이블 (상영일자 테이블) -->
+		<property name="schedule" value="schedule"/>
+		<property name="schedule_no" value="schedule_no"/>
+		<property name="schedule_movie_no" value="movie_no"/>
+		<property name="schedule_theater_no" value="theater_no"/>		
+		<property name="schedule_date" value="schedule_date"/>
+		<property name="schedule_time" value="schedule_time"/>
+		<!-- // schedule 테이블 (상영일자 테이블) -->
+		
+		
+		<!-- seat 테이블 (상영관 좌석 테이블) -->
+		<property name="seat" value="seat"/>
+		<property name="seat_no" value="seat_no"/>
+		<property name="seat_theater_no" value="theater_no"/>
+		<property name="seat_row" value="seat_row"/>
+		<property name="seat_column" value="seat_column"/>
+		<property name="seat_active" value="seat_active"/>
+		<property name="seat_count" value="seat_count"/> <!-- 사용 가능한 좌석 수 -->
+		<!-- // seat 테이블 (상영관 좌석 테이블) -->
+		
+				
+		<!-- pay 테이블 (결제 테이블) -->
+		<property name="pay" value="pay"/>
+		<property name="pay_no" value="pay_no"/>
+		<property name="pay_member_no" value="member_no"/>
+		<property name="pay_type" value="pay_type"/>
+		<property name="pay_price" value="pay_price"/>
+		<property name="pay_date" value="pay_date"/>
+		<!-- // pay 테이블 (결제 테이블) -->			
+		
+		
+		<!-- ticket 테이블(예매 테이블) -->
+		<property name="ticket" value="ticket"/>
+		<property name="ticket_no" value="ticket_no"/>
+		<property name="ticket_pay_no" value="pay_no"/>
+		<property name="ticket_schedule_no" value="schedule_no"/>
+		<property name="ticket_seat_no" value="seat_no"/>
+		<property name="ticket_price" value="ticket_price"/>
+		<property name="ticket_personnel" value="ticket_personnel"/>
+		<!-- // ticket 테이블(예매 테이블) -->
+        
+	</properties>
+
+	<!-- mybatis에 언더바 맵핑을 가능하게 하는 세팅 *정말 중요하다!*-->
+	<settings>        
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+    
+	<!-- typeAliases : 해당 package의 하위 객체를 등록하여 클래스명으로만 사용가능하게 함(package : 경로에있는 vo들의 객체를 생성해서 mapper에서 사용) -->
+	<typeAliases>
+		<package name="com.cannes.movie.domain" />
+	</typeAliases>
+
+</configuration>

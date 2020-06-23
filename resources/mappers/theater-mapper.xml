@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cannes.movie.TheaterMapper">
+	<!-- 상영관 등록 -->
+	<insert id="theaterInsert">
+		insert into ${theater} (${theater_name}, ${theater_seat}) 
+		values(#{theaterName},#{theaterSeat})
+	</insert>
+	
+	<!-- 상영관 목록 전체 가져오기 -->
+	<select id="theaterSelectAll" resultType="TheaterVO">
+		select * from ${theater} order by ${theater_name} asc
+	</select>
+	
+	<!-- 상영관 세부내용 가져오기 -->
+	<select id="theaterSelectByNo" resultType="TheaterVO">
+		select * from ${theater} where ${theater_no} = #{theaterNo}
+	</select>
+	
+	<!-- 상영관 수정 -->
+	<update id="theaterUpdate" >
+		update ${theater} set 
+		${theater_name} = #{theaterName}, 
+		${theater_seat} = #{theaterSeat} 
+		where ${theater_no} = #{theaterNo}
+	</update>
+	
+	<!-- 상영관 삭제 -->
+	<delete id="theaterDelete">
+		delete ${theater} where ${theater_no} = #{theaterNo}
+	</delete>
+</mapper>

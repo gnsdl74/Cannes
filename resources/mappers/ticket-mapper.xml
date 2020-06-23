@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cannes.movie.TicketMapper">
+
+	<!-- 결제 후 예매내역 등록  -->
+	<insert id="ticketInsert" parameterType="ticketVO">
+		insert into ${ticket} 
+		(${ticket_pay_no},${ticket_schedule_no},${ticket_seat_no},${ticket_price},${ticket_personnel})
+		values(#{payNo},#{scheduleNo},#{seatNo},#{ticketPrice},#{ticketPersonnel})
+	</insert>
+	
+	<!-- 예매내역 전체 가져오기(전체)  -->
+	<select id="ticketSelectAll" resultType="TicketVO">
+		select * from ${ticket} order by ${ticket_no} desc
+	</select>
+	
+	<!-- Pay테이블 회원번호로 예매내역 가져오기 -->
+	<select id="ticketSelectByMember" resultType="BookingVO">
+		select ticket.ticket_no,p.pay_no,ticket.seat_no, p.pay_date, s.schedule_date, s.schedule_time, m.movie_title, m.movie_poster, m.movie_showtime, t.theater_name 
+		from member member
+		join pay p
+		on member.member_no = p.member_no
+		join ticket ticket
+		on p.pay_no = ticket.pay_no
+		join schedule s
+		on ticket.schedule_no = s.schedule_no
+		join movie m
+		on s.movie_no = m.movie_no 
+		join theater t
+		on s.theater_no = t.theater_no
+		where member.member_no = #{memberNo}
+	</select>
+	
+	<!-- 예매내역 가져오기(해당번호)  -->
+	<select id="ticketSelectByNo" resultType="TicketVO">
+		select * from ${ticket} where ${ticket_no} = #{ticketNo}
+	</select>	
+	
+	<!-- 예매내역 삭제  -->
+	<delete id="ticketDelete">
+		delete ${ticket} where ${ticket_no} = #{ticketNo} 
+	</delete>
+
+
+	<!-- <selectKey keyProperty="ticketNo" resultType="integer" order="AFTER">
+			   select ticket_seq.currval from ticket where rownum = 1
+		</selectKey> 쿼리문 실행 후  실행 --> 
+</mapper>

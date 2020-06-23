@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cannes.movie.MovieMapper">
+	<!-- 영화 리스트 출력(Movie 페이지) -->
+	<select id="movieSelectAll" resultType="MovieVO">
+		select ${movie_no}, ${movie_age}, ${movie_title}, ${movie_date}, ${movie_poster} from ${movie} order by ${movie_date} desc
+	</select>
+	
+	<!-- 영화 리스트 20개 가져오기(MovieList 페이지) - 사용 -->
+	<select id="movieSelectPage" resultType="MovieVO">
+		select b.${movie_no}, b.${movie_age}, b.${movie_title}, b.${movie_date}, b.${movie_poster}, (select count(*) from movie) movie_count
+		from (
+			select rownum rn, a.* 
+			from (
+				select * from ${movie} order by ${movie_date} desc
+			) a
+		) b where rn between #{start} and #{end}
+	</select>
+	
+	<!-- 영화 포스터 가져오기(Booking 페이지) -->
+	<select id="posterSelect" resultType="MovieVO">
+		select ${movie_poster} from ${movie} where ${movie_no} = #{movieNo}
+	</select>
+	
+	<!-- 영화 제목으로 검색 기능 -->
+	<select id="movieSelectByTitle" resultType="MovieVO">
+		select b.${movie_no}, b.${movie_age}, b.${movie_title}, b.${movie_date}, b.${movie_poster}, 
+		(select count(*) from movie where ${movie_title} like #{keyword}) movie_count
+		from (
+			select rownum rn, a.* 
+			from (
+				select * from ${movie} where ${movie_title} like #{keyword} order by ${movie_date} desc
+			) a
+		) b where rn between #{c.start} and #{c.end}
+	</select>
+		
+	<!-- 영화 검색 후 클릭시 영화 세부사항 가져오기 -->
+	<select id="movieSelectDetail" resultType="MovieVO">
+		select * from ${movie} where ${movie_no} = #{movieNo}
+	</select>
+	
+	<!-- 선택한 날짜의 상영중인 영화제목을 가져오기  -->
+	<select id="movieSelectByDate" resultType="MovieVO">
+		select s.${schedule_movie_no},m.${movie_age},m.${movie_title} from ${schedule} s 
+		inner join ${movie} m 
+		on s.${schedule_movie_no} = m.${movie_no} where s.${schedule_date} = #{scheduleDate}
+		group by s.${schedule_movie_no}, m.${movie_title}, m.${movie_age} order by m.${movie_title}		
+	</select>
+	
+	<!-- 박스오피스 가져오기(Main 페이지) -->
+	<select id="movieSelectBoxOffice" resultType="MovieVO" parameterType="java.util.ArrayList">
+		select ${movie_no}, ${movie_age}, ${movie_title}, ${movie_content}, ${movie_date},
+		${movie_poster}, ${movie_video} from ${movie}
+		where ${movie_no} in (
+		<foreach collection="array" item="item" index="index" separator=",">
+			${item}
+		</foreach>
+		)
+	</select>
+	
+	<!-- 영화 등록(관리자용) -->
+	<insert id="movieInsert">
+		insert into ${movie} (${movie_no}, ${movie_type}, ${movie_showtime}, ${movie_age}, ${movie_title}, ${movie_content}, ${movie_director}, ${movie_actor}, ${movie_date}, ${movie_poster}, ${movie_video})
+		values (#{movie_no}, #{movie_type}, #{movie_showtime}, #{movieAge}, #{movieTitle}, #{movieContent}, #{movieDirector}, #{movieActor}, #{movieDate}, #{moviePoster}, #{movieVideo})
+	</insert>
+	
+	<!-- 영화 수정(관리자용) -->
+	<update id="movieUpdate">
+		update ${movie} set ${movie_type} = #{movieType}, ${movie_showtime} = #{movieShowtime}, ${movie_age} = #{movieAge}, ${movie_title} = #{movieTitle},
+		${movie_content} = #{movieContent}, ${movie_director} = #{movieDirector}, ${movie_actor} = #{movieActor},
+		${movie_date} = #{movieDate}, ${movie_poster} = #{moviePoster}, ${movie_video} = #{movieVideo} where ${movie_no} = #{movieNo}
+	</update>
+	
+	<!-- 영화 삭제(관리자용) -->
+	<delete id="movieDelete">
+		delete from ${movie} where ${movie_no} = #{movieNo}
+	</delete>
+	
+</mapper>
