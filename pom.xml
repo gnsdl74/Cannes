@@ -113,7 +113,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>  
 		<!-- 스프링 프레임워크에서 JUnit 테스트를 하기 위해 필요한 라이브러리 -->
